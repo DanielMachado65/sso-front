@@ -2196,11 +2196,6 @@ async-limiter@~1.0.0:
   resolved "https://registry.yarnpkg.com/async-limiter/-/async-limiter-1.0.1.tgz#dd379e94f0db8310b08291f9d64c3209766617fd"
   integrity sha512-csOlWGAcRFJaI6m+F2WKdnMKr4HhdhFVBk0H/QbJFMCr+uO2kwohwXQPxw/9OCxp05r5ghVBFSyioixx3gfkNQ==
 
-async@=0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/async/-/async-0.9.0.tgz#ac3613b1da9bed1b47510bb4651b8931e47146c7"
-  integrity sha1-rDYTsdqb7RtHUQu0ZRuJMeRxRsc=
-
 async@^2.6.2:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/async/-/async-2.6.3.tgz#d72625e2344a3656e3a3ad4fa749fa83299d82ff"
@@ -9892,12 +9887,9 @@ sockjs@0.3.19:
     faye-websocket "^0.10.0"
     uuid "^3.0.1"
 
-soil@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/soil/-/soil-0.0.3.tgz#3cc3ffaaa58f05008b3c78310d572072ab6d679b"
-  integrity sha1-PMP/qqWPBQCLPHgxDVcgcqttZ5s=
-  dependencies:
-    async "=0.9.0"
+"soil@git+ssh://git@github.com/checkplant/soil.git":
+  version "1.0.1"
+  resolved "git+ssh://git@github.com/checkplant/soil.git#f33e6cc497b6bab65474299eb27f4c2b2485aa19"
 
 sort-keys@^1.0.0:
   version "1.1.2"
