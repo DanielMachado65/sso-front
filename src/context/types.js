@@ -1,1 +1,1 @@
-export const change_user = 'change_user'; 
+export const changeUser = 'change_user'; 
