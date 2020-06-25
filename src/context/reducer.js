@@ -1,10 +1,12 @@
+import changeUser from './types';
+
 const initialState = {
   user: null,
 };
 
 const mainReducer = (state, action) => {
   switch (action.type) {
-    case 'changeUser':
+    case changeUser:
       return { ...state, user: action.payload };
 
     default:
