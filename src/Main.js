@@ -4,16 +4,12 @@ import { BrowserRouter, Switch } from "react-router-dom"
 import Routes from './Routes';
 
 const Main = () => {
-  return(
-    <>
+  return (
     <BrowserRouter>
       <Switch>
-        <Routes>
-
-        </Routes>
+        <Routes />
       </Switch>
     </BrowserRouter>
-    </>
   )
 }
 

@@ -6,7 +6,7 @@ import Login from './screens/login'
 const Routes = (props) => {
   return (
     <>
-      <Route exact path="/sign_in" children={<Login />} />
+      <Route exact path="/" children={<Login />} />
     </>
   )
 }
