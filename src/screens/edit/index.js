@@ -29,23 +29,14 @@ const Edit = () => {
         </div>
 
         <div className="wrapper-content">
-          <div className="content">
+          <div className="content ml-16 mr-16">
             <span className="font-soil h2 mb-24 mt-32 text-center block">Gerenciar Conta</span>
 
             <div className="card">
               <div className="row">
                 <div className="col-md-6 col-xs-12">
-                  <span className="font-soil h3 block mb-16"><i className="fa fa-user"></i> Informações Pessoais</span>
-                  <span className="font-soil font-body block mb-24">Informações básicas, como seu nome e foto, usadas no Farmbox.</span>
-
-                  <span className="font-soil label block">Foto de Exibição</span>
-                  <div className="mb-16">
-                    <span className="nametag">
-                      PL
-                    </span>
-                    <Button type="secondary" text="Adicionar" />
-                  </div>
-
+                  <span className="font-soil h3 block mb-16"><i className="fa fa-user mr-8"></i>Informações Pessoais</span>
+                  <span className="font-soil font-body block mb-24 mb-16-mobile">Informações básicas, como seu nome e foto, usadas no Farmbox.</span>
                   <div className="mb-16">
                     <span className="font-soil label block">Nome de exibição</span>
                     <input />
@@ -56,29 +47,65 @@ const Edit = () => {
                   </div>
                 </div>
                 <div className="col-md-6 col-xs-12">
-                  <span className="font-soil h3 block mb-16"><i className="fa fa-lock"></i> Acesso e Segurança</span>
-                  <span className="font-soil font-body block mb-24">Configurações para ajudar você a manter sua conta segura.</span>
+                  <span className="font-soil h3 block mb-16"><i className="fa fa-lock mr-8"></i>Acesso e Segurança</span>
+                  <span className="font-soil font-body block mb-24 mb-16-mobile">Configurações para ajudar você a manter sua conta segura.</span>
                   
                   <div className="card">
-                    <div className="mb-16">
-                      <span className="font-soil label block">Usuário</span>
-                      <span className="font-soil information block">mokfa</span>
+                    <div className="step-1">
+                      <div className="mb-16">
+                        <span className="font-soil label block">Usuário</span>
+                        <span className="font-soil information block">mokfa</span>
+                      </div>
+                      <div className="mb-16">
+                        <span className="font-soil label block">Email</span>
+                        <span className="font-soil information block">pedro@checkplant.com.br</span>
+                      </div>
+                      <div className="mb-16">
+                        <span className="font-soil label block">Senha</span>
+                        <span className="font-soil information block"><i className="fa fa-key"></i> *******</span>
+                      </div>
+                      <div className="edit-user flex">
+                        <Button type="link borderless" text="Editar" rightIcon="fa-pencil" />
+                      </div>
                     </div>
-                    <div className="mb-16">
-                      <span className="font-soil label block">Email</span>
-                      <span className="font-soil information block">pedro@checkplant.com.br</span>
+                    <div className="step-2">
+                      <span className="font-soil h2 block mb-16 text-center">Editar Acesso</span>
+                      <div>
+                        <span className="font-soil label block">Senha Atual</span>
+                        <input type="password" value="xxxxxxx" />
+                      </div>
+                      <div className="mb-16">
+                        <Button type="link borderless forgot-pass" text="Esqueci a senha" />
+                      </div>
+                      <div className="flex justify-center">
+                        <Button type="secondary" text="Confirmar" />
+                      </div>
+                      <div className="flex justify-center">
+                        <Button type="link borderless" text="Cancelar" />
+                      </div>
                     </div>
-                    <div className="mb-16">
-                      <span className="font-soil label block">Senha</span>
-                      <span><i className="fa fa-key"></i> *******</span>
-                    </div>
-                    <div className="mb-16 text-center">
-                      <Button type="link borderless" text="Editar" rightIcon="fa-pencil" />
+                    <div className="step-3">
+                      <div className="mb-16">
+                        <span className="font-soil label block">Usuário</span>
+                        <input type="text" />
+                      </div>
+                      <div className="mb-16">
+                        <span className="font-soil label block">Email</span>
+                        <input type="text" />
+                      </div>
+                      <div className="mb-16">
+                        <span className="font-soil label block">Nova senha</span>
+                        <input type="password" />
+                      </div>
+                      <div>
+                        <span className="font-soil label block">Confirmação de nova senha</span>
+                        <input type="password" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="row">
+              <div className="row mt-24">
                 <div className="col-md-12 flex">
                   <Button type="primary" text="Salvar" />
                   <Button type="link borderless" text="Cancelar" />

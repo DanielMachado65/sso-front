@@ -44,7 +44,7 @@ const Login = () => {
                 </span>
               </span>
             </div>
-            <a className="forgot-pass" href="/">Esqueci a senha</a>
+            <Button type="link borderless forgot-pass" text="Esqueci a senha" />
             <div className="field">
                 <span className="input-checkbox-group remember-me">
                   <input type="checkbox" id="user_remember_me" />

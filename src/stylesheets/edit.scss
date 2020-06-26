@@ -40,6 +40,7 @@
 
   .wrapper-content {
     max-width: 600px;
+    min-width: 320px;
     margin: 0 auto;
   }
 
@@ -50,9 +51,39 @@
       color: #C8CED8;
     }
   }
+  
+  .font-soil.label {
+    margin-bottom: 4px;
+  }
+
+  .edit-user {
+    justify-content: center;
+
+    .fa-key {
+      color: #798AA4;
+    }
+  }
+
+
+  .mb-16-mobile {
+    @media (max-width: 768px) {
+      margin-bottom: 16px;
+    }
+  }
+
+  .forgot-pass {
+    margin-left: -16px;
+  }
 }
 
-
+@media (max-width: 420px) {
+  .content {
+    > .card {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+    }
+  }
+}
 
 
 .text-center {
@@ -75,3 +106,8 @@
   -moz-box-shadow: 0px 2px 1px rgba(65, 81, 100, 0.15);
   -webkit-box-shadow: 0px 2px 1px rgba(65, 81, 100, 0.15);
 }
+
+.flex.justify-center {
+  justify-content: center;
+}
+
