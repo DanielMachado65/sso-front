@@ -4,6 +4,51 @@ import styled from 'styled-components'
 import { Button, Input } from 'soil'
 import SVGIcon from '../../services/SVGIcon';
 
+const Login = () => {
+
+  const [visible, setVisible] = useState(false);
+  const _onForgetPassword = () => setVisible(!visible)
+
+  return (
+    <>
+      <Content>
+        <Card>
+          <Logo>
+            <SVGIcon
+              width="149"
+              height="48"
+              name={'farmbox-logo-with-writes'}
+              fill={'none'} />
+          </Logo>
+          <Form>
+            <InputLogin
+              name="username"
+              label="Usuário"
+              type="text"
+              text="label"
+              style={{ marginTop: '16px' }} />
+            <InputPassword
+              name="password"
+              label="senha"
+              text="senha"
+              type={visible ? 'text' : 'password'}
+              rightIcon={visible ? 'fa-eye' : 'fa-eye-slash'}
+              style={{ marginTop: '20px', marginBottom: '5px' }}
+              onClick={_onForgetPassword} />
+
+            <ButtonOutlined type="link borderless forgot-pass" text="Esqueci a senha" />
+            <Input type="checkbox" text="Lembrar de mim?" />
+            <ButtonSubmit type="primary" text="Entrar" href="/" target="_blank" />
+          </Form>
+        </Card>
+      </Content>
+      <Footer>
+        <SVGIcon name={'farmbox-logo-footer'} fill={'none'} width="80" height="53" />
+      </Footer>
+    </>
+  )
+}
+
 const Content = styled.div`
   font-size: 14px;
   color: #333;
@@ -76,43 +121,6 @@ const InputPassword = styled(Input)`
   margin-top: 20px;
   margin-bottom: 5px;
 `;
-
-const Login = () => {
-
-  const [visible, setVisible] = useState(false);
-
-  const _onForgetPassword = () => {
-    setVisible(!visible)
-  }
-
-  return (
-    <>
-      <Content>
-        <Card>
-          <Logo>
-            <SVGIcon width="149" height="48" name={'farmbox-logo-with-writes'} fill={'none'} />
-          </Logo>
-          <Form>
-            <InputLogin name="username" label="Usuário" type="text" text="label" />
-            <InputPassword
-              name="password"
-              label="senha"
-              text="senha"
-              type={visible ? 'text' : 'password'}
-              rightIcon={visible ? 'fa-eye' : 'fa-eye-slash'}
-              onClick={_onForgetPassword} />
-            <ButtonOutlined type="link borderless forgot-pass" text="Esqueci a senha" />
-            <Input type="checkbox" text="Lembrar de mim?" />
-            <ButtonSubmit type="primary" text="Entrar" href="/" target="_blank" />
-          </Form>
-        </Card>
-      </Content>
-      <Footer>
-        <SVGIcon name={'farmbox-logo-footer'} fill={'none'} width="80" height="53" />
-      </Footer>
-    </>
-  )
-}
 
 
 export default Login;

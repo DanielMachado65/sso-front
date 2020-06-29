@@ -10015,7 +10015,7 @@ sockjs@0.3.19:
 
 "soil@git+ssh://git@github.com/checkplant/soil.git":
   version "1.0.1"
-  resolved "git+ssh://git@github.com/checkplant/soil.git#f782e77a4593afa57d587a8fa7bf6f5333ae8931"
+  resolved "git+ssh://git@github.com/checkplant/soil.git#855625d2d29e5222a89070b083c9485841fedc84"
 
 sort-keys@^1.0.0:
   version "1.1.2"
