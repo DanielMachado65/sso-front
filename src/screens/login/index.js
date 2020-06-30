@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { Button, Input } from 'soil'
@@ -9,6 +9,7 @@ import { login } from '../../services/user'
 import { Footer, Content, Card, Logo } from '../../components';
 
 const Login = () => {
+  const history = useHistory();
 
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState(null);
@@ -27,7 +28,7 @@ const Login = () => {
 
   const passwordRecovered = e => {
     e.preventDefault();
-    window.location.href = '/password/'
+    history.push('/password')
   }
 
   return (
