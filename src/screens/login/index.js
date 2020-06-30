@@ -4,16 +4,24 @@ import styled from 'styled-components'
 
 import { Button, Input } from 'soil'
 import SVGIcon from '../../services/SVGIcon';
+import { login } from '../../services/user';
 
 const Login = () => {
 
   const [visible, setVisible] = useState(false);
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
   const _onVisiblePassword = () => setVisible(!visible);
 
   const _onSubmit = e => {
     e.preventDefault();
-    console.log('submit');
+
+    login({ user }).then(resp => {
+      debugger
+    }).catch(() => setError('Usuário incorreto(s)'))
   }
+
+  const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
   const passwordRecovered = e => {
     e.preventDefault();
@@ -32,19 +40,21 @@ const Login = () => {
               fill={'none'} />
           </Logo>
           <Form>
-            <InputLogin
-              name="username"
+            <Input
+              name="login"
               label="Usuário"
               type="text"
-              text="label"
+              errorMessage={error}
+              onChange={_onHandleChange}
               style={{ marginTop: '16px' }} />
-            <InputPassword
+            <Input
               name="password"
-              label="senha"
-              text="senha"
+              label="Senha"
               type={visible ? 'text' : 'password'}
               rightIcon={visible ? 'fa-eye' : 'fa-eye-slash'}
+              errorMessage={error ? 'Senha incorreta(s)' : ''}
               style={{ marginTop: '20px', marginBottom: '5px' }}
+              onChange={_onHandleChange}
               onClick={_onVisiblePassword} />
 
             <ButtonOutlined
@@ -126,17 +136,6 @@ const ButtonOutlined = styled(Button)`
   padding: 8px 0px 0px 0px;
   margin-bottom: 24px;
 `;
-
-const InputLogin = styled(Input)`
-  margin-top: 16px;
-  background: red;
-`;
-
-const InputPassword = styled(Input)`
-  margin-top: 20px;
-  margin-bottom: 5px;
-`;
-
 
 export default Login;
 
