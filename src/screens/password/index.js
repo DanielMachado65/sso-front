@@ -5,19 +5,22 @@ import { useHistory } from 'react-router-dom'
 import SVGIcon from '../../services/SVGIcon';
 import { Footer, Content, Card, Logo } from '../../components';
 import { Input, Button } from 'soil';
+import { passwordRecovered } from '../../services/user';
 
 const Password = () => {
   const history = useHistory();
 
   const [user, setUser] = useState(null);
   const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+  const backNavigation = () => history.goBack();
 
   const _onSubmit = e => {
     e.preventDefault();
-    console.log(user)
+    passwordRecovered({ user: { email: user.login, commit: "Enviar as instruções por e-mails" } }).then(resp => {
+
+    }).catch(e => { console.log(e) })
   }
 
-  const backNavigation = () => history.goBack()
 
   return (
     <>
@@ -51,8 +54,7 @@ const Password = () => {
   )
 }
 
-const Form = styled.div`
-`;
+const Form = styled.div``;
 
 const Arrow = styled.div`
   cursor: pointer;

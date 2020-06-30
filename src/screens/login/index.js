@@ -16,19 +16,19 @@ const Login = () => {
   const [error, setError] = useState(null);
   const _onVisiblePassword = () => setVisible(!visible);
 
+  const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
+
+  const passwordRecovered = e => {
+    e.preventDefault();
+    history.push('/password')
+  }
+
   const _onSubmit = e => {
     e.preventDefault();
 
     login({ user }).then(resp => {
       debugger
     }).catch(() => setError('Usuário incorreto(s)'))
-  }
-
-  const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
-
-  const passwordRecovered = e => {
-    e.preventDefault();
-    history.push('/password')
   }
 
   return (
@@ -78,7 +78,7 @@ const Login = () => {
 }
 
 
-const Form = styled.form``;
+const Form = styled.div``;
 
 const ButtonSubmit = styled(Button)`
   width: 100%;
