@@ -4,23 +4,42 @@ import { useHistory } from 'react-router-dom'
 
 import SVGIcon from '../../services/SVGIcon';
 import { Footer, Content, Card, Logo } from '../../components';
-import { Input, Button } from 'soil';
+import { Input, Button, Toast } from 'soil';
 import { passwordRecovered } from '../../services/user';
 
 const Password = () => {
   const history = useHistory();
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
+  const [messages, setMessages] = useState([]);
+  const [status, setStatus] = useState({ type: 'error', icon: 'fa-times' });
+
   const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
   const backNavigation = () => history.goBack();
 
   const _onSubmit = e => {
     e.preventDefault();
-    passwordRecovered({ user: { email: user.login, commit: "Enviar as instruções por e-mails" } }).then(resp => {
-
-    }).catch(e => { console.log(e) })
+    if (user.username)
+      passwordRecovered({
+        user: {
+          username: user.username,
+          commit: "Enviar as instruções por e-mails",
+        }
+      }).then(resp => {
+        setStatus({ type: 'success', icon: 'fa-check' })
+        setMessages(['Dentro de alguns minutos você irá receber um e-mail'])
+      }).catch(e => {
+        const { errors, error } = e.response.data;
+        if (errors)
+          Object.keys(errors).map(e => setMessages([...messages, ...errors[e]]))
+        else if (error)
+          setMessages([...messages, error])
+        else
+          setMessages([...messages, 'Aconteceu alguma coisa no servidor'])
+      })
+    else
+      setMessages([...messages, 'preencha os dados corretamente'])
   }
-
 
   return (
     <>
@@ -35,9 +54,15 @@ const Password = () => {
               fill={'none'} />
           </Logo>
           <Form>
+            <Toast
+              messages={messages}
+              type={status.type}
+              icon={status.icon}
+              style={{ position: 'initial', height: '100%' }} />
+
             <label>Por favor preencha como o username uma vez passado para você</label>
             <Input
-              name="login"
+              name="username"
               label="Usuário"
               type="text"
               onChange={_onHandleChange}
