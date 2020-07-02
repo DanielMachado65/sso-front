@@ -35,10 +35,11 @@ const SubCard = styled.div`
 const MainTitle = styled.h2`
     margin-top: 30px;
     text-align: center;
+    font-size: 22px;
 `;
 
 const Title = styled.h3`
-
+  font-size: 18px;
 `;
 
 const SubTitle = styled.span`
@@ -51,7 +52,7 @@ const Edit = () => {
   useEffect(() => {
     let json = localStorage.getItem('__user');
     const userData = JSON.parse(json);
-
+    console.log(userData);
     if (userData)
       dispatch({ type: 'change_user', payload: userData })
   }, [])
@@ -65,6 +66,16 @@ const Edit = () => {
       <Content>
         <MainTitle>Gerenciar a conta</MainTitle>
         <CardMain>
+          <div className="row">
+            <div className="col">
+              asjdhaskd
+            </div>
+            
+            <div className="col">
+              asjdhaskd
+            </div>
+
+          </div>
           <Row>
             <Col md={6} xs={12}>
               <Title><Icon icon="fa-user" style={{ marginRight: '8px' }} />Informações Pessoais</Title>

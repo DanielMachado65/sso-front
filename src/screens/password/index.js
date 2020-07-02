@@ -18,6 +18,16 @@ const Password = () => {
   const _onHandleChange = e => setUser({ ...user, [e.target.name]: e.target.value })
   const backNavigation = () => history.push('/');
 
+  const getError = e => {
+    const { errors, error } = e.response.data;
+    if (errors)
+      Object.keys(errors).map(e => setMessages([...messages, ...errors[e]]))
+    else if (error)
+      setMessages([error])
+    else
+      setMessages(['¯\\_(ツ)_/¯ Aconteceu alguma coisa no servidor'])
+  }
+
   const _onSubmit = e => {
     e.preventDefault();
     if (user.username)
@@ -33,21 +43,11 @@ const Password = () => {
           setStatus({ type: 'success', icon: 'fa-check' })
           setMessages(['A senha foi mudada com sucesso'])
           setTimeout(() => history.replace('/'), 2000)
-        }).catch(getError);
+        }).catch(e => getError(e));
       else
         setMessages(['A senha e a confirmação não são as mesma'])
     else
       setMessages([...messages, 'preencha os dados corretamente'])
-  }
-
-  const getError = e => {
-    const { errors, error } = e.response.data;
-    if (errors)
-      Object.keys(errors).map(e => setMessages([...messages, ...errors[e]]))
-    else if (error)
-      setMessages([...messages, error])
-    else
-      setMessages([...messages, '¯\\_(ツ)_/¯ Aconteceu alguma coisa no servidor'])
   }
 
   return (

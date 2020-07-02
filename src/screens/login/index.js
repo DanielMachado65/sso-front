@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
 import { useStateValue } from '../../context/state'
 
 import styled from 'styled-components'
@@ -11,7 +12,8 @@ import { Footer, Content, Card, Logo } from '../../components';
 
 const Login = () => {
   const history = useHistory();
-
+  
+  const [cookies, setCookie] = useCookies(['_sso_session']);
   const [, dispatch] = useStateValue();
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState(null);
@@ -30,8 +32,8 @@ const Login = () => {
 
     login({ user }).then(resp => {
       localStorage.setItem('__user', JSON.stringify(resp.data));
+      debugger
       dispatch({ type: 'change_user', payload: resp.data })
-      history.push('/edit')
     }).catch(() => setError('Usuário incorreto(s)'))
   }
 
