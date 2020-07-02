@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import styled from 'styled-components'
+import { useStateValue } from '../../context/state'
 
-import { Button, Input } from 'soil'
+import styled from 'styled-components'
 import SVGIcon from '../../services/SVGIcon';
+import { Button, Input } from 'soil'
 import { login } from '../../services/user'
 
 import { Footer, Content, Card, Logo } from '../../components';
@@ -11,6 +12,7 @@ import { Footer, Content, Card, Logo } from '../../components';
 const Login = () => {
   const history = useHistory();
 
+  const [, dispatch] = useStateValue();
   const [visible, setVisible] = useState(false);
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
@@ -27,7 +29,9 @@ const Login = () => {
     e.preventDefault();
 
     login({ user }).then(resp => {
-      debugger
+      localStorage.setItem('__user', JSON.stringify(resp.data));
+      dispatch({ type: 'change_user', payload: resp.data })
+      history.push('/edit')
     }).catch(() => setError('Usuário incorreto(s)'))
   }
 
