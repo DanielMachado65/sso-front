@@ -31,7 +31,8 @@ const SubCard = styled.div`
   border-radius: 8px;
   border: 1px solid #E7E8EF;
   padding: 16px;
-  margin-bottom: 24px;
+  margin-left: -15px;
+  margin-right: -15px;
 `;
 
 const MainTitle = styled.h2`
@@ -72,10 +73,10 @@ const Edit = () => {
         iconProvider='default' />
       <Content>
         <div>
-          <MainTitle>Gerenciar a conta</MainTitle>
+          <MainTitle>Gerenciar Conta</MainTitle>
           <CardMain>
             <Row>
-              <Col md={6} xs={12}>
+              <Col md={6} xs={12} className="col-mb-24">
                 <Title><Icon icon="fa-user" style={{ marginRight: '8px' }} />Informações Pessoais</Title>
                 <SubTitle>Informações básicas, como seu nome e foto, usadas no Farmbox.</SubTitle>
                 <Input
@@ -89,7 +90,7 @@ const Edit = () => {
                   type="type"
                   style={{ marginTop: '16px', width: '140px' }} />
               </Col>
-              <Col md={6} xs={12}>
+              <Col md={6} xs={12} className="col-mb-24">
                 <Title><Icon icon='fa-lock' style={{ marginRight: '8px' }} />Acesso e Segurança</Title>
                 <SubTitle>Configurações para ajudar você a manter sua conta segura.</SubTitle>
 
@@ -104,7 +105,7 @@ const Edit = () => {
                   </div>
                   <div className="mb-16">
                     <span className="font-soil label block">Senha</span>
-                    <span className="font-soil information block"><i className="fa fa-key"></i> *******</span>
+                    <span className="font-soil information block"><i className="fa fa-key" style={{ color: '#798AA4'}}></i> *******</span>
                   </div>
                   <div className="flex justify-content-center">
                     <Button type="link borderless" text="Editar" rightIcon="fa-pencil" />

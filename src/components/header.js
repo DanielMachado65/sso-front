@@ -10,15 +10,14 @@ const Head = styled.div`
 `;
 
 const BackLink = styled(Link)`
-    color: #FFF !important;
-    line-height: 32px;
-    padding: 0 16px;  
+  color: #FFF !important;
+  line-height: 32px;
+  padding: 0 16px;  
 `;
 
 const SubHeader = styled.div`
   box-shadow: 0px 3px 8px rgba(65, 81, 100, 0.24), 0px 3px 12px rgba(65, 81, 100, 0.12);
   padding: 14px 16px;
-
   display: flex;
   align-items: center;
 `;
@@ -27,14 +26,8 @@ const H2 = styled.div`
   font-family: Roboto;
   font-weight: 500;
   font-size: 20px;
-  
   color: #20252B;
   line-height: 100%;
-
-  @media only screen and (max-width: 599px){
-    margin-right: 20px;
-    font-size: 1.5rem;
-  }
 `;
 
 const H2Farmbox = styled(H2)`
