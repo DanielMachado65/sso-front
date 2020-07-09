@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Content = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   background-color: #fff;
   padding: 0px !important;

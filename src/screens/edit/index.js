@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { useStateValue } from '../../context/state'
 
@@ -35,6 +35,20 @@ const SubCard = styled.div`
   margin-right: -15px;
 `;
 
+const SubCardExtraPadding = styled(SubCard)`
+  padding: 16px 32px;
+
+  .input-default > div {
+    input {
+      height: 32px;
+    }
+
+    i {
+      font-size: 12px;
+    }
+  }
+`;
+
 const MainTitle = styled.h2`
   margin-top: 30px;
   text-align: center;
@@ -56,6 +70,10 @@ const SubTitle = styled.span`
 
 const Edit = () => {
   const [{ user }, dispatch] = useStateValue();
+  const [visible, setVisible] = useState(false);
+  const [error, setError] = useState(null);
+
+  const _onVisiblePassword = () => setVisible(!visible);
 
   useEffect(() => {
     let json = localStorage.getItem('__user');
@@ -64,6 +82,11 @@ const Edit = () => {
     if (userData)
       dispatch({ type: 'change_user', payload: userData })
   }, [])
+
+  const passwordRecovered = e => {
+    e.preventDefault();
+  }
+
 
   return (
     <>
@@ -83,12 +106,12 @@ const Edit = () => {
                   name="name"
                   label="Nome de exibição"
                   type="type"
-                  style={{ marginTop: '16px', width: '190px' }} />
+                  style={{ marginTop: '16px', width: '190px', fontSize: '12px' }} />
                 <Input
                   name="telephone"
                   label="Telefone"
                   type="type"
-                  style={{ marginTop: '16px', width: '140px' }} />
+                  style={{ marginTop: '16px', width: '140px', fontSize: '12px' }} />
               </Col>
               <Col md={6} xs={12} className="col-mb-24">
                 <Title><Icon icon='fa-lock' style={{ marginRight: '8px' }} />Acesso e Segurança</Title>
@@ -111,6 +134,93 @@ const Edit = () => {
                     <Button type="link borderless" text="Editar" rightIcon="fa-pencil" />
                   </div>
                 </SubCard>
+
+                <SubCardExtraPadding>
+                  <span className="font-soil h2 flex justify-content-center mb-16">Editar Acesso</span>
+                  <span className="flex font-soil subtitle mb-8" style={{lineHeight: '100%'}}>Email de recuperação enviado!</span>
+                  <Input
+                    name="password"
+                    label="Senha atual"
+                    type={visible ? 'text' : 'password'}
+                    leftIcon={'fa-key'}
+                    rightIcon={visible ? 'fa-eye-slash' : 'fa-eye'}
+                    errorMessage={error ? 'Senha incorreta.' : ''}
+                    onClick={_onVisiblePassword}
+                    style={{ fontSize: '12px' }} />
+                  
+                  <Button
+                    type="link borderless minor mb-8"
+                    text="Esqueci a senha" />
+
+                  <div className="flex justify-content-center">
+                    <Button
+                      type="secondary mb-8"
+                      text="Confirmar" />
+                  </div>
+
+                  <div className="flex justify-content-center">
+                    <Button
+                      type="link borderless"
+                      text="Cancelar" />
+                  </div>
+                </SubCardExtraPadding>
+
+                <SubCardExtraPadding>
+                  <span className="font-soil h2 flex justify-content-center mb-16">Esqueci a senha</span>
+                  <Input
+                    name="name"
+                    label="Usuário ou email"
+                    type="type"
+                    style={{ fontSize: '12px' }} />
+
+                  <span className="flex font-soil subtitle" style={{lineHeight: '100%'}}>Vamos mandar um email para o seu email com as instruções.</span>
+
+                  <div className="flex justify-content-center">
+                    <Button
+                      type="secondary mb-8"
+                      text="Recuperar a senha" />
+                  </div>
+
+                  <div className="flex justify-content-center">
+                    <Button
+                      type="link borderless"
+                      text="Cancelar" />
+                  </div>
+                </SubCardExtraPadding>
+
+                <SubCard>
+                  <Input
+                    name="name"
+                    label="Usuário"
+                    type="type"
+                    style={{ marginTop: '16px', width: '190px', fontSize: '12px' }} />
+                  <Input
+                    name="name"
+                    label="Email"
+                    type="type"
+                    style={{ marginTop: '16px', width: '190px', fontSize: '12px' }} />
+                  <Input
+                    name="password"
+                    label="Nova senha"
+                    type={visible ? 'text' : 'password'}
+                    rightIcon={visible ? 'fa-eye-slash' : 'fa-eye'}
+                    errorMessage={error ? 'Senha incorreta.' : ''}
+                    onClick={_onVisiblePassword}
+                    style={{ fontSize: '12px' }} />
+                  <Input
+                    name="password"
+                    label="Nova senha"
+                    type={visible ? 'text' : 'password'}
+                    rightIcon={visible ? 'fa-eye-slash' : 'fa-eye'}
+                    errorMessage={error ? 'Senha incorreta.' : ''}
+                    onClick={_onVisiblePassword}
+                    style={{ fontSize: '12px' }} />
+
+                  <div className="flex justify-content-center">
+                    <Button type="secondary" text="Confirmar" />
+                  </div>
+                </SubCard>
+
               </Col>
             </Row>
             <Row>
