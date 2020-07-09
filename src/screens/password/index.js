@@ -45,16 +45,15 @@ const Password = () => {
           setTimeout(() => history.replace('/'), 2000)
         }).catch(e => getError(e));
       else
-        setMessages(['A senha e a confirmação não são as mesma'])
+        setMessages(['A senha e a confirmação não são as mesmas'])
     else
-      setMessages([...messages, 'preencha os dados corretamente'])
+      setMessages(['Usuário inválido'])
   }
 
   return (
     <>
       <Content>
         <Card>
-          <Arrow onClick={backNavigation}>Voltar</Arrow>
           <Logo>
             <SVGIcon
               width="149"
@@ -63,13 +62,14 @@ const Password = () => {
               fill={'none'} />
           </Logo>
           <Form>
+            <div className="flex justify-content-center">
+              <span className="font-soil h2 mt-8 mb-8">Esqueci a senha</span>
+            </div>
             <Toast
               messages={messages}
               type={status.type}
               icon={status.icon}
               style={{ position: 'initial', height: '100%' }} />
-
-            <label>Por favor preencha como o username uma vez passado para você</label>
             {
               token ?
                 <>
@@ -77,8 +77,10 @@ const Password = () => {
                     name="password"
                     label="Senha"
                     type="password"
+
                     onChange={_onHandleChange}
                     style={{ marginTop: '16px' }} />
+
                   <Input
                     name="confirm_password"
                     label="Confirmação de Senha"
@@ -91,10 +93,17 @@ const Password = () => {
                   label="Usuário"
                   type="text"
                   onChange={_onHandleChange}
-                  style={{ marginTop: '16px' }} />
+                  style={{ marginTop: '12px' }} />
             }
-            <ButtonSubmit type="primary" text="Entrar" onClick={_onSubmit} />
+            <div className="flex">
+              <span className="font-soil information" style={{color: '#798AA4'}}>Vamos mandar um email para o seu email com as instruções para recuperar a conta.</span>
+            </div>
+
+            <ButtonSubmit type="secondary" text="Recuperar a senha" onClick={_onSubmit} />
           </Form>
+          <div className="flex justify-content-center mt-8">
+            <Button type="link borderless" text="Cancelar" onClick={backNavigation} />
+          </div>
         </Card>
       </Content>
       <Footer>
@@ -106,13 +115,9 @@ const Password = () => {
 
 const Form = styled.div``;
 
-const Arrow = styled.div`
-  cursor: pointer;
-`;
-
 const ButtonSubmit = styled(Button)`
   width: 100%;
-  margin-top: 24px;
+  margin-top: 16px;
 
   display: center;
   justify-content: center;

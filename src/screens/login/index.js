@@ -61,7 +61,7 @@ const Login = () => {
               label="Senha"
               type={visible ? 'text' : 'password'}
               rightIcon={visible ? 'fa-eye-slash' : 'fa-eye'}
-              errorMessage={error ? 'Senha incorreta(s)' : ''}
+              errorMessage={error ? ' ' : ''}
               style={{ marginTop: '20px', marginBottom: '5px' }}
               onChange={_onHandleChange}
               onClick={_onVisiblePassword} />

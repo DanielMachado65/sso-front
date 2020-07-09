@@ -1,3 +1,7 @@
 // SOIL
 @import "../../node_modules/soil/dist/soil.css";
-@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap.min.css";
+
+body {
+  -webkit-font-smoothing: antialiased;
+}

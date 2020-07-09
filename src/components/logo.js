@@ -5,7 +5,7 @@ const Logo = styled.div`
   justify-content: center;
   align-center: center;
 
-  padding: 8px 0 24px;
+  padding: 16px 0 24px;
 `;
 
 export default Logo;
